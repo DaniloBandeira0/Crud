@@ -6,35 +6,36 @@
 
 <h2>Todos os serviços</h2>
 
-<a href="servicos-cadastros.php"> Adicionar novo serviço</a>
+<a href="agenda-cadastro.php">Marque seu horário</a>
 
 <table border="2">
     <tr>
-        <th>Serviço</th>
-        <th>Descrição</th>
-        <th>Preço</th>
-        <th>categoria</th>
-        <th>Ações</th>
+        <th>Funcionario</th>
+        <th>Data</th>
+        <th>Horario</th>
+        <th>Servico</th>
+        
+        
     </tr>
 
 <?php
 
-$sql = "select * from servicos";
+$sql = "select * from agenda";
 $resultado = mysqli_query ($conexao, $sql);
 
 while($linha = mysqli_fetch_assoc($resultado)){
     echo "<tr>";
+    echo "<td>{$linha['funcionario']}</td>";
+    echo "<td>{$linha['data']}</td>";
+    echo "<td>{$linha['horario']}</td>";
     echo "<td>{$linha['servico']}</td>";
-    echo "<td>{$linha['descricao']}</td>";
-    echo "<td>{$linha['preco']}</td>";
-    echo "<td>{$linha['categoria']}</td>";
     
     
 
     echo "<td>";
-    echo "<a href='servicos-excluir.php?id={$linha['id']}'>";
+    echo "<a href='agenda-excluir.php?id={$linha['id']}'>";
     echo "<img src='lixeira.png' width='20px'>";
-    echo "<a href='servicos-editar.php?id={$linha['id']}'>";
+    echo "<a href='agenda-editar.php?id={$linha['id']}'>";
     echo "<img src='editar.webp' width='20px'>";
     echo "</a>";
     echo "</td>";
